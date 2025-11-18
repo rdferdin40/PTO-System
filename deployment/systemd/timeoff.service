@@ -1,0 +1,41 @@
+[Unit]
+Description=TimeOff Management - Employee Leave/Absence Management System
+Documentation=https://github.com/timeoff-management/timeoff-management-application
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/html/PTO-System
+Environment=NODE_ENV=production
+EnvironmentFile=/var/www/html/PTO-System/.env
+
+# Node.js executable path (adjust based on your Node.js installation)
+# If using nvm: /home/username/.nvm/versions/node/v18.x.x/bin/node
+# If using system Node.js: /usr/bin/node
+ExecStart=/usr/bin/node /var/www/html/PTO-System/bin/wwww
+
+# Restart policy
+Restart=always
+RestartSec=10
+
+# Resource limits
+LimitNOFILE=65536
+
+# Standard output and error logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=timeoff
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+
+# Process management
+KillMode=mixed
+KillSignal=SIGTERM
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target
