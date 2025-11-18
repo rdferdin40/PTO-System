@@ -1,0 +1,13 @@
+.git
+.github
+.vscode
+.env
+.env*
+docs
+config.example/
+scripts/
+import/
+export/
+mock_data/
+import_data/
+node_modules/

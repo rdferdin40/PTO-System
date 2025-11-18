@@ -1,0 +1,38 @@
+<div>
+  <strong>Name:</strong> {{userFullName}}.
+</div>
+<div>
+  <strong>Department:</strong> {{departmentName}}.
+</div>
+{{#if userAllowance }}
+<div>
+  <strong>Available:</strong> [{{userAllowance.remaining_regular_allowance}} reg,
+  {{#if userAllowance.total_personal_available}}{{userAllowance.total_personal_available}}{{else}}0{{/if}} pers] days
+  out of
+  {{userAllowance.total_number_of_days_in_allowance}} total.
+</div>
+{{#if (lt userAllowance.number_of_days_available_in_allowance 0)}}
+<div class="text-danger">
+  <strong>⚠️ Overbooked!</strong> Negative balance - user must cancel requests before approval.
+</div>
+{{/if}}
+{{/if}}
+{{#if specialLeaveTypes}}
+<div>
+  <strong>Special Leave Days Taken:</strong>
+  <ul>
+    {{#each specialLeaveTypes}}
+    <li>{{this.name}}: {{this.days_taken}} {{#if this.days_taken_plural}}days{{else}}day{{/if}}{{#unless
+      @last}},{{/unless}}</li>
+    {{/each}}
+  </ul>
+</div>
+{{/if}}
+{{#if supervisorNames}}
+<div>
+  <strong>Approvers:</strong>
+  <ul>
+    {{#each supervisorNames}}<li>{{this}}{{#unless @last}},{{/unless}}</li>{{/each}}
+  </ul>
+</div>
+{{/if}}
