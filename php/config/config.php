@@ -15,6 +15,7 @@ return [
         'environment' => getenv('APP_ENV') ?: 'production',
         'debug' => getenv('APP_DEBUG') === 'true',
         'timezone' => getenv('APP_TIMEZONE') ?: 'America/New_York',
+        'allow_self_registration' => getenv('OPTION_ALLOW_NEW_REGISTRATIONS') === 'true',
     ],
 
     // Database
