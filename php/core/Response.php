@@ -78,6 +78,21 @@ class Response
      */
     public static function redirect(string $url, int $statusCode = 302): self
     {
+        // Auto-detect base path for subdirectory installations
+        if ($url[0] === '/' && !str_starts_with($url, '//')) {
+            // Get base path from SCRIPT_NAME (e.g., /pto/index.php -> /pto)
+            $scriptName = $_SERVER['SCRIPT_NAME'] ?? '';
+            $basePath = dirname($scriptName);
+
+            // Normalize base path
+            if ($basePath === '/' || $basePath === '\\' || $basePath === '.') {
+                $basePath = '';
+            }
+
+            // Prepend base path to URL
+            $url = $basePath . $url;
+        }
+
         return new self('', $statusCode, [
             'Location' => $url
         ]);
