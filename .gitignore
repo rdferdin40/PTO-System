@@ -5,6 +5,7 @@
 *.swm
 node_modules/
 config/
+!php/config/
 build/
 scripts/*.sql
 scripts/*.dump
