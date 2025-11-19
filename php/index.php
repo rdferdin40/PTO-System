@@ -7,6 +7,9 @@
  * All URLs are routed through this file via .htaccess
  */
 
+// Define base path constant (required by config.php security check)
+define('BASEPATH', true);
+
 // Display errors in development (disable in production)
 error_reporting(E_ALL);
 ini_set('display_errors', '1');

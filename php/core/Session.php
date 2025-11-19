@@ -24,7 +24,7 @@ class Session
         ini_set('session.cookie_samesite', 'Lax');
 
         // Use database-backed sessions (implement custom handler if needed)
-        session_name('timeoff.sid'); // Match Node.js session cookie name
+        session_name('timeoff_sid'); // Session cookie name (no special chars allowed)
         session_start();
 
         self::$started = true;
